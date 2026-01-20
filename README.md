@@ -68,3 +68,11 @@ powershell -ExecutionPolicy Bypass -File "C:\Path\Reconnect-PrinterPort.ps1"
   -ExecutionPolicy Bypass ^
   -File "\\SERVER\Scripts\Reconnect-PrinterPort.ps1"
 
+## Running the Script from a Network Share (Recommended)
+
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe ^
+  -NoProfile ^
+  -ExecutionPolicy Bypass ^
+  -File "\\SERVER\Scripts\Reconnect-PrinterPort.ps1"
+
+
