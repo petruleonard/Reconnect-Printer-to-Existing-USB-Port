@@ -63,3 +63,8 @@ Instead of reconfiguring applications, this script lets you **move the new print
 ```cmd
 powershell -ExecutionPolicy Bypass -File "C:\Path\Reconnect-PrinterPort.ps1"
 
+%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe ^
+  -NoProfile ^
+  -ExecutionPolicy Bypass ^
+  -File "\\SERVER\Scripts\Reconnect-PrinterPort.ps1"
+
