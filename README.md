@@ -1,8 +1,11 @@
 # Reconnect Printer to Existing USB Port (PowerShell)
 
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1-blue?logo=powershell)
+![Windows](https://img.shields.io/badge/Windows-10/11-green)
+
 ## Overview
 
-This PowerShell script allows you to **reassign a newly connected USB printer to an existing USB virtual port** (e.g. `USB003`) on Windows 10 / Windows 11.
+This PowerShell script allows you to **reassign a newly connected USB printer to an existing USB virtual port** (e.g., `USB003`) on Windows 10 / Windows 11.
 
 It is designed for scenarios where:
 
@@ -60,49 +63,43 @@ Instead of reconfiguring applications, this script lets you **move the new print
 
 ---
 
-## Running the Script (Local)
+## Quick Start
 
-```cmd
+### Running Locally
+
+Open PowerShell as Administrator and run:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File "C:\Path\Reconnect-PrinterPort.ps1"
-
-Running the Script from a Network Share (Recommended)
-
-If your script is hosted on a network share, you can run it directly using the UNC path without mapping a drive:
+Running from a Network Share (Recommended)
+If your script is hosted on a network share, run it directly using the UNC path:
 
 %SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe ^
   -NoProfile ^
   -ExecutionPolicy Bypass ^
   -File "\\SERVER\Scripts\Reconnect-PrinterPort.ps1"
-
-
 You can also create a shortcut with the same command and enable Run as administrator for easier access.
 
 Notes:
 
-Scripts running from network locations may be blocked. If needed, unblock the script once:
+Scripts from network locations may be blocked. Unblock if necessary:
 
 Unblock-File "\\SERVER\Scripts\Reconnect-PrinterPort.ps1"
-
-
-Using -ExecutionPolicy Bypass ensures the script will run even if execution policies are strict.
+Using -ExecutionPolicy Bypass ensures the script will run regardless of system policy.
 
 UTF‑8 / International Characters
+The script sets UTF-8 encoding to correctly display special characters (e.g., Romanian diacritics). Ensure:
 
-The script explicitly configures UTF‑8 encoding to correctly display non‑ASCII characters (e.g. Romanian diacritics).
+The script file is saved as UTF-8 with BOM
 
-Ensure the script file is saved as UTF-8 with BOM and the console font supports Unicode (e.g. Consolas or Cascadia Mono).
+PowerShell console font supports Unicode (e.g., Consolas, Cascadia Mono)
 
-At the start of the script, the following lines are included:
+At the start of the script, these lines are included:
 
 chcp 65001 > $null
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new()
 [Console]::InputEncoding  = [System.Text.UTF8Encoding]::new()
-
-
-This guarantees proper display of special characters.
-
 Security Notes
-
 The script does not create or delete ports
 
 The script does not install drivers
@@ -116,8 +113,7 @@ Administrative privileges are required for reassignment
 Network share access requires read permissions
 
 Limitations
-
-Does not auto‑detect printers by VID/PID (manual selection)
+Does not auto-detect printers by VID/PID (manual selection required)
 
 Requires administrative privileges
 
@@ -126,7 +122,6 @@ Subject to domain Group Policies in corporate environments
 Script does not create new ports or install drivers
 
 Tested On
-
 Windows 11 Pro
 
 Windows 10 Pro
@@ -138,11 +133,10 @@ Standard users with admin credential elevation
 Network share execution (UNC paths)
 
 License
-
 MIT License
 Use, modify, and distribute freely.
 
 Disclaimer
-
 Use at your own risk.
 Always verify printer configuration in production environments.
+
